@@ -326,12 +326,52 @@
 <script src="all.min.js"></script>
 <script src="love.min.js"></script>
 <script>
+	// ========== 修复 flowtime 触摸方向 + 添加返回导航 ==========
+	(function() {
+		var flowtime = document.querySelector('.flowtime');
+		var startX = 0, startY = 0;
+		var THRESHOLD = 80;
+
+		document.addEventListener('touchstart', function(e) {
+			startX = e.touches[0].clientX;
+			startY = e.touches[0].clientY;
+		}, { passive: true });
+
+		document.addEventListener('touchend', function(e) {
+			var dx = e.changedTouches[0].clientX - startX;
+			var dy = e.changedTouches[0].clientY - startY;
+			var absDx = Math.abs(dx);
+			var absDy = Math.abs(dy);
+
+			if (Math.max(absDx, absDy) < THRESHOLD) return;
+
+			if (absDx > absDy) {
+				// 水平滑动：左滑→下一页，右滑→上一页
+				if (dx < 0) {
+					Flowtime.nextPage();
+				} else {
+					Flowtime.prevPage();
+				}
+			} else {
+				// 垂直滑动：下滑→下一页，上滑→上一页
+				if (dy > 0) {
+					Flowtime.nextPage();
+				} else {
+					Flowtime.prevPage();
+				}
+			}
+
+			// 隐藏提示
+			var hint = document.querySelector('.nav-hint');
+			if (hint) hint.style.display = 'none';
+		}, { passive: true });
+	})();
+
 	// 触摸/点击继续提示隐藏
 	document.addEventListener('click', function() {
 		var hint = document.querySelector('.nav-hint');
 		if (hint) hint.style.display = 'none';
 	});
-	// 页面切换时隐藏提示
 	window.hideNavHint = function() {
 		var hint = document.querySelector('.nav-hint');
 		if (hint) hint.style.display = 'none';
