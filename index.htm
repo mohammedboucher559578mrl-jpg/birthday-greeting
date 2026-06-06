@@ -182,19 +182,23 @@
 		.ft-page img {
 			z-index: 1;
 		}
-		/* 导航提示 */
-		.nav-hint {
-			position: fixed;
-			bottom: 30px;
-			left: 50%;
-			transform: translateX(-50%);
-			color: #fff;
-			font-size: 1.2em;
-			opacity: 0.7;
-			z-index: 999;
-			animation: bounce 2s infinite;
-			text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-		}
+	/* 导航提示 */
+	.nav-hint {
+		position: fixed;
+		bottom: 30px;
+		left: 50%;
+		transform: translateX(-50%);
+		color: #fff;
+		font-size: 1em;
+		opacity: 0.8;
+		z-index: 999;
+		animation: bounce 2s infinite;
+		text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+		background: rgba(0,0,0,0.35);
+		padding: 8px 20px;
+		border-radius: 20px;
+		pointer-events: none;
+	}
 		@keyframes bounce {
 			0%, 100% { transform: translateX(-50%) translateY(0); }
 			50% { transform: translateX(-50%) translateY(-10px); }
