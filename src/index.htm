@@ -1,0 +1,341 @@
+<html>
+<!--[if IE 6]><html id="ie6" class="ie ie6 lt-ie9"><![endif]-->
+<!--[if IE 7]><html id="ie7" class="ie ie7 lt-ie9"><![endif]-->
+<!--[if IE 8]><html id="ie8" class="ie ie8 lt-ie9"><![endif]-->
+<!--[if gte IE 9]><html class="ie ie9"><![endif]-->
+<!--[if !(IE)]><!--><html><!--<![endif]-->
+<head>
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="author" content="Birthday Greeting">
+	<meta name="description" content="生日快乐祝福网站">
+	<title>🎂 生日快乐 🎂</title>
+	<link rel="stylesheet" href="all.min.css">
+	<style>
+		/* 自定义字体 */
+		@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+		@font-face {
+			font-family: 'ZCOOL';
+			src: url('https://cdn.jsdelivr.net/npm/zcool-kuaile@1.0.0/fonts/zcool-kuaile.woff2') format('woff2');
+		}
+		body {
+			font-family: 'ZCOOL KuaiLe', 'Microsoft YaHei', cursive;
+		}
+		/* 标题页样式 */
+		.page-title {
+			background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+		}
+		.page-title .text1 {
+			font-size: 4em;
+			color: #fff;
+			text-shadow: 0 0 20px rgba(255,255,255,0.8);
+		}
+		.page-title .text2 {
+			font-size: 1.5em;
+			color: #fff;
+			opacity: 0.9;
+		}
+		/* 章节标题通用 */
+		.ft-page h2, .ft-page h3 {
+			font-family: 'ZCOOL KuaiLe', 'Microsoft YaHei', cursive;
+			color: #fff;
+			text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+		}
+		.ft-page p {
+			font-family: 'ZCOOL KuaiLe', 'Microsoft YaHei', cursive;
+		}
+		.center-text {
+			font-size: 3em !important;
+		}
+		.top-text {
+			font-size: 2.5em !important;
+		}
+		.text2 {
+			font-size: 1.8em !important;
+			color: rgba(255,255,255,0.85) !important;
+		}
+		/* 全屏图片 */
+		.full-img img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.full-img .center-text,
+		.full-img .top-text {
+			position: relative;
+			z-index: 2;
+		}
+		/* 左图右文 */
+		.left-img {
+			display: flex;
+			align-items: center;
+		}
+		.left-img img {
+			width: 55%;
+			height: 100%;
+			object-fit: cover;
+		 flex-shrink: 0;
+		}
+		.left-img h2, .left-img h3 {
+			position: absolute;
+			left: 58%;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 40%;
+			font-size: 2.5em;
+			line-height: 1.6;
+		}
+		/* 右图左文 */
+		.right-img {
+			display: flex;
+			align-items: center;
+		}
+		.right-img img {
+			width: 55%;
+			height: 100%;
+			object-fit: cover;
+		 position: absolute;
+			right: 0;
+			top: 0;
+		}
+		.right-img h2, .right-img h3 {
+			position: absolute;
+			left: 5%;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 40%;
+			font-size: 2.5em;
+			line-height: 1.6;
+		}
+		/* 顶部文字 */
+		.top-text-layout {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			padding-top: 5%;
+		}
+		.top-text-layout h3 {
+			font-size: 2.5em;
+			text-align: center;
+		 padding: 20px;
+			background: rgba(0,0,0,0.3);
+			border-radius: 20px;
+		}
+		.top-text-layout img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		/* 最后一页祝福 */
+		.blessing-page {
+			background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.blessing-page .blessing-title {
+			font-size: 5em;
+			color: #fff;
+			text-shadow: 3px 3px 15px rgba(200,50,50,0.6);
+			animation: pulse 2s infinite;
+		}
+		.blessing-page .blessing-sub {
+			font-size: 2.5em;
+			color: #fff;
+			margin-top: 30px;
+			text-align: center;
+			line-height: 1.8;
+		}
+		.blessing-page .blessing-wish {
+			font-size: 2em;
+			color: rgba(255,255,255,0.9);
+			margin-top: 40px;
+			text-align: center;
+			line-height: 2;
+		}
+		@keyframes pulse {
+			0%, 100% { transform: scale(1); }
+			50% { transform: scale(1.05); }
+		}
+		/* 图片叠加层 */
+		.img-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			z-index: 0;
+		}
+		.ft-page > *:not(img) {
+			position: relative;
+			z-index: 2;
+		}
+		.ft-page img {
+			z-index: 1;
+		}
+		/* 导航提示 */
+		.nav-hint {
+			position: fixed;
+			bottom: 30px;
+			left: 50%;
+			transform: translateX(-50%);
+			color: #fff;
+			font-size: 1.2em;
+			opacity: 0.7;
+			z-index: 999;
+			animation: bounce 2s infinite;
+			text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+		}
+		@keyframes bounce {
+			0%, 100% { transform: translateX(-50%) translateY(0); }
+			50% { transform: translateX(-50%) translateY(-10px); }
+		}
+	</style>
+</head>
+<body>
+
+<div class="flowtime">
+	<!-- ========== 封面页 ========== -->
+	<div class="ft-section section-1" data-id="section-1">
+		<div id="/section-1/page-1" class="ft-page page-1 page-title" data-id="page-1">
+			<p class="text1">🎂 生日快乐 🎂</p>
+			<p class="text2">按键盘 "↓" 或滑动屏幕<br>开启祝福之旅</p>
+		</div>
+
+		<!-- 第一章：从童年说起 -->
+		<div id="/section-1/page-2" class="ft-page page-2 full-img" data-id="page-2">
+			<img src="img/iali63.jpg" alt="童年时光" />
+			<p class="top-text" style="position:absolute;bottom:15%;left:50%;transform:translateX(-50%);width:80%;text-align:center;font-size:2.2em;background:rgba(0,0,0,0.4);padding:20px;border-radius:15px;">
+				生命的旅程，从呱呱坠地开始<br>那小小的身影，承载着无限可能
+			</p>
+		</div>
+
+		<div id="/section-1/page-3" class="ft-page page-3 left-img" data-id="page-3">
+			<img src="img/iali35.jpg" alt="童年探索" />
+			<h2 class="text" style="left:58%;font-size:2.5em;">童年时光<br>无忧无虑的笑容<br>纯真善良的心灵</h2>
+		</div>
+
+		<div id="/section-1/page-4" class="ft-page page-4 full-img" data-id="page-4">
+			<img src="img/iali6.jpg" alt="成长的山岗" />
+			<h2 class="center-text">渐渐长大<br>独自面对世界的风雨</h2>
+		</div>
+	</div>
+
+	<!-- ========== 第二章：成长历程 ========== -->
+	<div class="ft-section section-2" data-id="section-2">
+		<div id="/section-2/page-1" class="ft-page page-5 full-img" data-id="page-1">
+			<img src="img/iali19.jpg" alt="青春岁月" />
+			<h2 class="center-text">青春岁月<br>有欢笑，也有泪水</h2>
+		</div>
+
+		<div id="/section-2/page-2" class="ft-page page-6 full-img" data-id="page-2">
+			<img src="img/iali29.jpg" alt="挑战" />
+			<h2 class="center-text">每一次挑战<br>都是成长的礼物</h2>
+		</div>
+
+		<div id="/section-2/page-3" class="ft-page page-7 full-img" data-id="page-3">
+			<img src="img/iali60.jpg" alt="坚强面对" />
+			<h2 class="center-text" style="font-size:2.5em;">微笑面对一切<br>心中永存希望</h2>
+		</div>
+
+		<div id="/section-2/page-4" class="ft-page page-8 full-img" data-id="page-4">
+			<img src="img/iali51.jpg" alt="风雨" />
+			<h2 class="center-text">生活总有风风雨雨</h2>
+		</div>
+
+		<div id="/section-2/page-5" class="ft-page page-9 full-img" data-id="page-5">
+			<img src="img/iali5.jpg" alt="阳光" />
+			<h2 class="center-text">但阳光总在风雨后</h2>
+		</div>
+
+		<div id="/section-2/page-6" class="ft-page page-10 full-img" data-id="page-6">
+			<img src="img/iali22.jpg" alt="自信" />
+			<h2 class="center-text">面带自信的笑容<br>勇敢前行</h2>
+		</div>
+	</div>
+
+	<!-- ========== 第三章：今天是你的生日 ========== -->
+	<div class="ft-section section-3" data-id="section-3">
+		<div id="/section-3/page-1" class="ft-page page-11 full-img" data-id="page-1">
+			<img src="img/iali24.jpg" alt="今天" />
+			<h2 class="center-text">而今天<br>是一个特别的日子</h2>
+		</div>
+
+		<div id="/section-3/page-2" class="ft-page page-12 full-img" data-id="page-2">
+			<img src="img/iali25.jpg" alt="生日" />
+			<h2 class="center-text" style="font-size:2.8em;">你的生日<br>属于你的闪耀时刻</h2>
+		</div>
+
+		<div id="/section-3/page-3" class="ft-page page-13 full-img" data-id="page-3">
+			<img src="img/iali64.jpg" alt="许愿" />
+			<h2 class="center-text">许下心愿<br>吹灭蜡烛</h2>
+		</div>
+
+		<div id="/section-3/page-4" class="ft-page page-14 full-img" data-id="page-4">
+			<img src="img/iali46.jpg" alt="愿望" />
+			<h2 class="center-text" style="font-size:2.2em;">愿你的每一个愿望<br>都能成真</h2>
+		</div>
+
+		<div id="/section-3/page-5" class="ft-page page-15 left-img" data-id="page-15">
+			<img src="img/iali45.jpg" alt="祝福" />
+			<h2 style="left:58%;font-size:2.2em;line-height:1.8;">愿你被世界温柔以待<br>愿你永远保持热爱<br>愿你心想事成</h2>
+		</div>
+
+		<div id="/section-3/page-6" class="ft-page page-16 full-img" data-id="page-16">
+			<img src="img/iali66.jpg" alt="雪地" />
+			<h2 class="center-text" style="font-size:2.5em;">前路漫漫<br>愿你永远不孤单</h2>
+		</div>
+
+		<div id="/section-3/page-7" class="ft-page page-17 full-img" data-id="page-17">
+			<img src="img/iali16.jpg" alt="相遇" />
+			<h2 class="center-text" style="font-size:2.2em;">感恩生命中的每一次相遇<br>感恩陪伴在身边的人</h2>
+		</div>
+	</div>
+
+	<!-- ========== 第四章：最终祝福 ========== -->
+	<div class="ft-section section-4" data-id="section-4">
+		<div id="/section-4/page-1" class="ft-page page-18 blessing-page" data-id="page-1">
+			<div class="blessing-title">🎉 生日快乐 🎉</div>
+			<div class="blessing-sub">
+				愿你眼里全是温柔<br>
+				愿你嘴角永挂笑容<br>
+				愿你心中永存爱意
+			</div>
+			<div class="blessing-wish">
+				新的一岁<br>
+				愿你平安喜乐<br>
+				愿你万事顺遂<br>
+				愿你梦想成真
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="nav-hint">↓ 按键继续</div>
+
+<script src="jquery.min.js"></script>
+<script src="all.min.js"></script>
+<script src="love.min.js"></script>
+<script>
+	// 触摸/点击继续提示隐藏
+	document.addEventListener('click', function() {
+		var hint = document.querySelector('.nav-hint');
+		if (hint) hint.style.display = 'none';
+	});
+	// 页面切换时隐藏提示
+	window.hideNavHint = function() {
+		var hint = document.querySelector('.nav-hint');
+		if (hint) hint.style.display = 'none';
+	}
+</script>
+</body>
+</html>
